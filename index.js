@@ -44,6 +44,8 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :b
 //     next(); 
 // })
 
+app.use(express.static("dist")); 
+
 const personsCount = ()=>{
     let count = 0;
     persons.forEach(elt =>{
