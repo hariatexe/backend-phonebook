@@ -46,6 +46,13 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :b
 
 app.use(express.static("dist")); 
 
+//cors 
+const cors = require('cors')
+
+app.use(cors())
+
+
+//functions
 const personsCount = ()=>{
     let count = 0;
     persons.forEach(elt =>{
@@ -121,6 +128,7 @@ app.post('/api/persons',(request,response)=>{
     response.status(200).json(person); 
 })
 
-const PORT = 3001; 
-app.listen(PORT); 
-console.log('Server running on port '+PORT); 
+const PORT = process.env.PORT || 3001; 
+app.listen(PORT,()=>{
+    console.log('Server running on port '+PORT); 
+}); 
